@@ -1,0 +1,70 @@
+﻿<Window x:Class="InsuranceCompany.View.BranchView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsuranceCompany.View" xmlns:viewmodel="clr-namespace:InsuranceCompany.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:BranchViewModel}"
+        mc:Ignorable="d"
+        Title="Филиалы" Height="250" Width="800" WindowStartupLocation="CenterScreen" Background="#dacec2">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20" Background="Black">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border CornerRadius="12" Padding="2" BorderThickness="0.1" BorderBrush="Black" Background="#463f3f">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="5, 5, 15, 5"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Padding" Value="7.5,0,0,0"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Код филиала" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Адрес" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Телефон" Grid.Row="3" Grid.Column="0"/>
+
+        <TextBox Text="{Binding Branch.Code}" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Text="{Binding Branch.Title}" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Text="{Binding Branch.Address}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Text="{Binding Branch.Phone}" Grid.Column="1" Grid.Row="3"/>
+
+        <Button Content="{Binding Action}" Command="{Binding ExecuteCommand}" Grid.Row="4" Grid.ColumnSpan="2" Margin="5, 5, 15, 5" FontSize="14"/>
+    </Grid>
+</Window>

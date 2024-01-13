@@ -1,0 +1,67 @@
+﻿<Window x:Class="InsuranceCompany.View.InsuranceTypeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsuranceCompany.View" xmlns:viewmodel="clr-namespace:InsuranceCompany.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:InsuranceTypeViewModel}"
+        mc:Ignorable="d"
+        Title="Виды страхования" Height="200" Width="600" WindowStartupLocation="CenterScreen" Background="#dacec2">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="15,5,5,5"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20" Background="Black">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border CornerRadius="12" Padding="2" BorderThickness="0.1" BorderBrush="Black" Background="#463f3f">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="5, 5, 15, 5"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Padding" Value="7.5,0,0,0"/>
+            </Style>
+       
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Код вида страхования" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Процент" Grid.Row="2" Grid.Column="0"/>
+
+        <TextBox Text="{Binding InsuranceType.Code}" Grid.Row="0" Grid.Column="1"/>
+        <TextBox Text="{Binding InsuranceType.Title}" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Text="{Binding InsuranceType.Percent}" Grid.Row="2" Grid.Column="1"/>
+        <Button Content="{Binding Action}" Command="{Binding ExecuteCommand}" Grid.Row="3" Grid.ColumnSpan="2" Margin="5, 5, 15, 5" FontSize="14"/>
+    </Grid>
+</Window>
